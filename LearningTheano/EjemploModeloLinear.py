@@ -12,6 +12,8 @@ def model(X,W):
 
 #Se crean los pesos
 W=theano.shared(np.asarray(0.,dtype=theano.config.floatX))
+#Aqui W se inicializa a 0
+
 
 #Se le pasa al modelo la entrada y los pesos
 y=model(X,W)
