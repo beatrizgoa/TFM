@@ -19,21 +19,16 @@ class LeNetConvPoolLayer(object):
     def __init__(self, rng, input, filter_shape, image_shape, poolsize=(2, 2)):
         """
         Allocate a LeNetConvPoolLayer with shared variable internal parameters.
-
         :type rng: numpy.random.RandomState
         :param rng: a random number generator used to initialize weights
-
         :type input: theano.tensor.dtensor4
         :param input: symbolic image tensor, of shape image_shape
-
         :type filter_shape: tuple or list of length 4
         :param filter_shape: (number of filters, num input feature maps,
                               filter height, filter width)
-
         :type image_shape: tuple or list of length 4
         :param image_shape: (batch size, num input feature maps,
                              image height, image width)
-
         :type poolsize: tuple or list of length 2
         :param poolsize: the downsampling (pooling) factor (#rows, #cols)
         """
@@ -47,6 +42,7 @@ class LeNetConvPoolLayer(object):
         # each unit in the lower layer receives a gradient from:
         # "num output feature maps * filter height * filter width" /
         #   pooling size
+
         fan_out = (filter_shape[0] * numpy.prod(filter_shape[2:]) /
                    numpy.prod(poolsize))
         # initialize weights with random weights
@@ -241,15 +237,12 @@ def evaluate_lenet5(learning_rate=0.1, n_epochs=200,
     print '... training'
     # early-stopping parameters
     patience = 10000  # look as this many examples regardless
-    patience_increase = 2  # wait this much longer when a new best is
-                           # found
+    patience_increase = 2  # wait this much longer when a new best is found
     improvement_threshold = 0.995  # a relative improvement of this much is
                                    # considered significant
     validation_frequency = min(n_train_batches, patience / 2)
-                                  # go through this many
-                                  # minibatche before checking the network
-                                  # on the validation set; in this case we
-                                  # check every epoch
+                                  # go through this many minibatche before checking the network
+                                  # on the validation set; in this case we check every epoch
 
     best_validation_loss = numpy.inf
     best_iter = 0
